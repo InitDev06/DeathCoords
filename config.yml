@@ -1,0 +1,46 @@
+# Developer : SimpleCoder
+# Version : 10.1
+# Support : 1.8.x to 1.17.1
+#-----------
+# Placeholders :
+#
+#  %coords_x% - Returns X coordinates of player.
+#  %coords_y% - Returns Y coordinates of player.
+#  %coords_z% - Returns Z coordinates of player.
+#  %coords_yaw% - Returns YAW parameters of player.
+#  %coords_pitch% - Returns PITCH parameters of player.
+#  %world% - Return world of player.
+#  %reloadTime% - Return reload time.
+#  %perm% - Return missing perm.
+#  %file% - Return file name.
+#  %scmd% - Return sub-command.
+#-----------
+# Permissions :
+#
+#  deathcoords.* - All permissions.
+#  deathcoords.command.admin - Use the command /deathcoords.
+options:
+  enable_titles: true
+  enable_actionbar: true
+  enable_sounds: true
+  enable_fireworks: true
+  sounds:
+    permissions: ENTITY_ITEM_BREAK
+    event: ENTITY_ARROW_HIT
+    reload: ENTITY_IRON_GOLEM_REPAIR
+    volumen: 1.0
+    pitch: 1.0
+  titles:
+    fadeIn: 20
+    showTime: 25
+    fadeOut: 35
+  fireworks:
+    effect: CREEPER
+    power: 5
+  event:
+    drop_exp: 0
+    keep_inv: true
+    keep_lvl: true
+    death_message: true
+    exp: 10
+    lvl: 5

@@ -1,0 +1,12 @@
+name: DeathCoords
+main: org.deathcoords.net.DeathCoords
+version: 10.1
+api-version: 1.16
+author: SimpleCoder
+permissions:
+  deathcoords.*:
+    children:
+      - deathcoords.command.admin
+commands:
+  deathcoords:
+    aliases: [dc]
