@@ -8,6 +8,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.deathcoords.net.cmds.MainCMD;
 import org.deathcoords.net.color.Color;
 import org.deathcoords.net.listeners.PlayerListener;
 import org.deathcoords.net.nms.Controller;
@@ -46,19 +47,19 @@ public class DeathCoords extends JavaPlugin
 		try
 		{
 			cl = Class.forName("org.spigotmc.SpigotConfig");
-			Bukkit.getConsoleSender().sendMessage(Color.tr("&7[&cDeathEvents&7] Loading Files.."));
+			Bukkit.getConsoleSender().sendMessage(Color.tr("&7[&cDeathCoords&7] Loading Files.."));
 			create("config");
 			create("lang");
 			cfg = getFile("config");
 			msg = getFile("lang");
-			String message = "&7[&cDeathEvents&7] &aFiles loaded in &e" + (System.currentTimeMillis() - startTime) + "" + " &ams!";
+			String message = "&7[&cDeathCoords&7] &aFiles loaded in &e" + (System.currentTimeMillis() - startTime) + "" + " &ams!";
 			message = Color.tr(message);
 			Bukkit.getConsoleSender().sendMessage(message);
-			Bukkit.getConsoleSender().sendMessage(Color.tr("&7[&cDeathEvents&7] Loading Components.."));
+			Bukkit.getConsoleSender().sendMessage(Color.tr("&7[&cDeathCoords&7] Loading Components.."));
 			hasCommands();
 			hasListeners();
-			Bukkit.getConsoleSender().sendMessage(Color.tr("&7[&cDeathEvents&7] &aLoaded components!"));
-			Bukkit.getConsoleSender().sendMessage(Color.tr("&7[&cDeathEvents&7] Version &6" + ve));
+			Bukkit.getConsoleSender().sendMessage(Color.tr("&7[&cDeathCoords&7] &aLoaded components!"));
+			Bukkit.getConsoleSender().sendMessage(Color.tr("&7[&cDeathCoords&7] Version &6" + ve));
 			c = new Controller(this);
 		}
 		catch(ClassNotFoundException ex)
@@ -72,7 +73,7 @@ public class DeathCoords extends JavaPlugin
 	
 	private void hasCommands()
 	{
-		
+		new MainCMD(this);
 	}
 	
 	private void hasListeners()

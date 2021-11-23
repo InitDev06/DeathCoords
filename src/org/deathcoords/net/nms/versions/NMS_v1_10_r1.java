@@ -12,13 +12,12 @@ import net.minecraft.server.v1_10_R1.PlayerConnection;
 
 public class NMS_v1_10_r1 implements NMS 
 {
-
-	@SuppressWarnings("rawtypes")
+	
 	@Override
 	public void sendActionBar(Player p, String ac) {
 		IChatBaseComponent icbc = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + ac + "\"}");
 	    PacketPlayOutChat bar = new PacketPlayOutChat(icbc, (byte)2);
-	    (((CraftPlayer)p).getHandle()).playerConnection.sendPacket((Packet)bar);
+	    (((CraftPlayer)p).getHandle()).playerConnection.sendPacket(bar);
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -40,4 +39,5 @@ public class NMS_v1_10_r1 implements NMS
 		     pConn.sendPacket((Packet)pTitle);
 		 } 
 	}
+
 }

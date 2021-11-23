@@ -11,9 +11,9 @@ import net.minecraft.server.v1_16_R3.Packet;
 import net.minecraft.server.v1_16_R3.PacketPlayOutTitle;
 import net.minecraft.server.v1_16_R3.PlayerConnection;
 
-public class NMS_v1_16_r3 implements NMS 
+public class NMS_v1_16_r3 implements NMS
 {
-
+	
 	@Override
 	public void sendActionBar(Player p, String ac) {
 		p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new ComponentBuilder(ac).create());

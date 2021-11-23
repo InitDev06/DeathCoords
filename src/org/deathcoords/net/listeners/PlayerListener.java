@@ -3,6 +3,7 @@ package org.deathcoords.net.listeners;
 import java.text.NumberFormat;
 import java.util.Optional;
 
+import org.bukkit.Bukkit;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -128,6 +129,8 @@ public class PlayerListener implements Listener
 						.trail(true)
 						.withTrail()
 						.withFlicker()
+						.withColor(org.bukkit.Color.BLUE)
+						.withColor(org.bukkit.Color.YELLOW)
 						.with(FireworkEffect.Type.valueOf(ef))
 						.build());
 				
@@ -148,26 +151,27 @@ public class PlayerListener implements Listener
 			ev.setKeepLevel(keep_lvl);
 		}
 		
-		if(!(cfg.getBoolean("options.event.death_message")))
-		{	
+		if(cfg.getBoolean("options.event.disable_default_death_msg"))
+		{
 			ev.setDeathMessage(null);
 		}
-		else
-		{
-			String message = msg.getString("general.event.death_broadcast");
-			
-			message = Color.tr(message);
-			message = message.replace("%coords_x%", nf.format(p.getLocation().getBlockX()));
-			message = message.replace("%coords_y%", nf.format(p.getLocation().getBlockY()));
-			message = message.replace("%coords_z%", nf.format(p.getLocation().getBlockZ()));
-			message = message.replace("%coords_yaw%", p.getLocation().getYaw() + "");
-			message = message.replace("%coords_pitch%", p.getLocation().getPitch() + ""); 
-			message = message.replace("%world%", p.getWorld().getName());
-			message = message.replace("%user_name%", p.getName());
-			
-			ev.setDeathMessage(message);
-		}
 		
+		String message = msg.getString("general.event.death_broadcast");
+			
+		message = Color.tr(message);
+		message = message.replace("%coords_x%", nf.format(p.getLocation().getBlockX()));
+		message = message.replace("%coords_y%", nf.format(p.getLocation().getBlockY()));
+		message = message.replace("%coords_z%", nf.format(p.getLocation().getBlockZ()));
+		message = message.replace("%coords_yaw%", p.getLocation().getYaw() + "");
+		message = message.replace("%coords_pitch%", p.getLocation().getPitch() + ""); 
+		message = message.replace("%world%", p.getWorld().getName());
+		message = message.replace("%user_name%", p.getName());
+		
+		for(Player on : Bukkit.getOnlinePlayers())
+		{
+			on.sendMessage(message);
+		}
+
 		int dropped_exp = cfg.getInt("options.event.drop_exp");
 		int new_exp = cfg.getInt("options.event.exp");
 		int new_lvl = cfg.getInt("options.event.lvl");
@@ -176,17 +180,17 @@ public class PlayerListener implements Listener
 		ev.setNewExp(new_exp);
 		ev.setNewLevel(new_lvl);
 		
-		String message = msg.getString("general.event.death_message");
+		String message2 = msg.getString("general.event.death_message");
 		
-		message = Color.tr(message);
-		message = message.replace("%coords_x%", nf.format(p.getLocation().getBlockX()));
-		message = message.replace("%coords_y%", nf.format(p.getLocation().getBlockY()));
-		message = message.replace("%coords_z%", nf.format(p.getLocation().getBlockZ()));
-		message = message.replace("%coords_yaw%", p.getLocation().getYaw() + "");
-		message = message.replace("%coords_pitch%", p.getLocation().getPitch() + ""); 
-		message = message.replace("%world%", p.getWorld().getName());
+		message2 = Color.tr(message2);
+		message2 = message2.replace("%coords_x%", nf.format(p.getLocation().getBlockX()));
+		message2 = message2.replace("%coords_y%", nf.format(p.getLocation().getBlockY()));
+		message2 = message2.replace("%coords_z%", nf.format(p.getLocation().getBlockZ()));
+		message2 = message2.replace("%coords_yaw%", p.getLocation().getYaw() + "");
+		message2 = message2.replace("%coords_pitch%", p.getLocation().getPitch() + ""); 
+		message2 = message2.replace("%world%", p.getWorld().getName());
 		
-		p.sendMessage(message);
+		p.sendMessage(message2);
 	}
 	
 	

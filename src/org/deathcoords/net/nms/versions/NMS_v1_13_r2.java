@@ -13,7 +13,7 @@ import net.minecraft.server.v1_13_R2.PlayerConnection;
 
 public class NMS_v1_13_r2 implements NMS 
 {
-
+	
 	@Override
 	public void sendActionBar(Player p, String ac) {
 		p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new ComponentBuilder(ac).create());
@@ -38,4 +38,5 @@ public class NMS_v1_13_r2 implements NMS
 		     pConn.sendPacket((Packet)pTitle);
 		 } 
 	}
+
 }

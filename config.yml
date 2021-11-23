@@ -1,6 +1,7 @@
 # Developer : SimpleCoder
 # Version : 10.1
-# Support : 1.8.x to 1.17.1
+# Support : (1.8.8 - 1.9.4 - 1.10.2 - 1.11.2 - 1.12.2 - 1.13.2 - 1.14.4 - 1.15.2 - 1.16.5 - 1.17.1) 
+# Type : Spigot and Paper
 #-----------
 # Placeholders :
 #
@@ -25,7 +26,7 @@ options:
   enable_sounds: true
   enable_fireworks: true
   sounds:
-    permissions: ENTITY_ITEM_BREAK
+    permission: ENTITY_ITEM_BREAK
     event: ENTITY_ARROW_HIT
     reload: ENTITY_IRON_GOLEM_REPAIR
     volumen: 1.0
@@ -38,9 +39,9 @@ options:
     effect: CREEPER
     power: 5
   event:
-    drop_exp: 0
     keep_inv: true
     keep_lvl: true
-    death_message: true
+    disable_default_death_msg: true
+    drop_exp: 0
     exp: 10
     lvl: 5
